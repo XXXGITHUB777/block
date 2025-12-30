@@ -7,9 +7,6 @@ from datetime import datetime
 # 请按优先级排列！排在上面的源，其规则策略（例如 reject-dict）会优先被保留
 REMOTE_URLS = [
     "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-QuantumultX.list", # 秋风（通常质量很高，建议放前）
-    "https://raw.githubusercontent.com/amiglistimo/Quantumult-X/main/Rewrite/ADBlock.list",
-    "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list",
-    "https://raw.githubusercontent.com/zirawell/R-Store/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list",
     "https://limbopro.com/Adblock4limbo.list"
 ]
 
