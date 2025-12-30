@@ -72,7 +72,7 @@ def fetch_and_merge_rules():
                         continue
 
                 rule_type = parts[0].upper()
-                target = parts[1]
+                target = parts[1].strip().lower() # 强制转小写，提高去重率
                 policy = parts[2].lower() # 策略转小写以便比较
 
                 # 3. 筛选有效类型 (只处理 Host/IP 相关)
