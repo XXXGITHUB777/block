@@ -5,77 +5,107 @@ from datetime import datetime
 
 # ================= 配置区域 =================
 
-# 使用 GhProxy 代理 GitHub Raw 链接，这是目前最稳的方案
 REMOTE_URLS = [
-    # 1. 秋风
+    # 秋风 (GhProxy 代理)
     "https://ghproxy.net/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-QuantumultX.list",
-    
-    # 2. 毒奶 Limbopro
+    # 毒奶 (GhProxy 代理)
     "https://ghproxy.net/https://raw.githubusercontent.com/limbopro/Adblock4limbo/main/Adblock4limbo.list"
 ]
 
 # ================= 逻辑区域 =================
 
+def clean_line(line):
+    """
+    超级清洗函数：去除各种注释、特殊符号
+    """
+    # 1. 去除行尾注释 (支持 #, ;, //)
+    # 比如: "HOST, a.com, reject # 广告" -> "HOST, a.com, reject"
+    line = re.split(r'(#|;|//)', line)[0]
+    
+    # 2. 去除首尾空格、引号
+    line = line.strip().strip("'").strip('"')
+    
+    return line
+
 def fetch_and_merge_rules():
     unique_rules = {} 
     source_stats = {} 
     
-    # 伪装成浏览器，防止被拦截
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent': 'Quantumult%20X/1.0.30 (iPhone; iOS 16.0; Scale/3.00)',
     }
     
-    print(f"--- 开始执行 7.0 GhProxy 代理合并 ---")
+    print(f"--- 开始执行 8.0 万能解析版 ---")
 
     for url in REMOTE_URLS:
-        if "AWAvenue" in url: name = "秋风(AWAvenue)"
-        elif "limbopro" in url: name = "毒奶(Limbopro)"
-        else: name = "Unknown"
-            
-        print(f"正在下载: {name} ...", end="")
+        name = "秋风" if "AWAvenue" in url else "毒奶" if "limbopro" in url else "未知源"
+        print(f"正在处理: {name} ...", end="")
         
         try:
             resp = requests.get(url, headers=headers, timeout=60)
-            resp.encoding = 'utf-8' # 强制UTF-8
+            resp.encoding = 'utf-8'
             
             if resp.status_code != 200:
-                print(f" [失败] HTTP 状态码: {resp.status_code}")
+                print(f" [失败] HTTP {resp.status_code}")
                 source_stats[name] = 0
                 continue
 
             lines = resp.text.splitlines()
             current_count = 0
+            skipped_examples = [] # 记录被丢弃的行用于调试
             
-            # --- 核心逻辑 ---
             for line in lines:
-                line = line.strip()
-                # 过滤无效行
-                if not line or line.startswith(('#', ';', '//', '[', '<', '!')):
-                    continue
-                if ',' not in line:
-                    continue
-                    
-                parts = [p.strip() for p in line.split(',')]
+                # === 清洗阶段 ===
+                raw_line = line # 保留原始行用于报错
+                line = clean_line(line)
                 
-                # 补全缺省策略
-                if len(parts) == 2: parts.append("reject")
-                
-                if len(parts) < 3: continue
+                # 跳过空行和明显非规则行
+                if not line or line.startswith(('[', '<', '!', 'no-alert')):
+                    continue
 
+                # === 拆分阶段 ===
+                # 尝试用逗号拆分
+                if ',' in line:
+                    parts = [p.strip() for p in line.split(',')]
+                else:
+                    # 如果没有逗号，尝试用空格拆分 (兼容 Surge/Clash 格式)
+                    # 比如: "DOMAIN-SUFFIX ad.com REJECT"
+                    parts = line.split()
+
+                # 长度检查
+                if len(parts) < 2:
+                    if len(skipped_examples) < 3: skipped_examples.append(f"[过短] {raw_line}")
+                    continue
+
+                # === 识别阶段 ===
                 rule_type = parts[0].upper()
                 target = parts[1]
-                policy = parts[2].lower()
-
-                # 类型过滤
+                
+                # 兼容性映射 (把其他软件的格式转为 QX)
+                if rule_type == "DOMAIN": rule_type = "HOST"
+                if rule_type == "DOMAIN-SUFFIX": rule_type = "HOST-SUFFIX"
+                if rule_type == "DOMAIN-KEYWORD": rule_type = "HOST-KEYWORD"
+                if rule_type == "IP-CIDR": rule_type = "IP-CIDR" 
+                
+                # 策略处理
+                policy = "reject"
+                if len(parts) >= 3:
+                    policy = parts[2].lower()
+                
+                # 再次清洗策略 (比如 "reject,no-resolve" -> "reject")
+                if "reject" in policy:
+                    policy = "reject" # 统一简化为 reject，防止复杂参数导致失效
+                
+                # === 过滤阶段 ===
+                # 只保留 QX 支持的去广告类型
                 if rule_type not in ["HOST", "HOST-SUFFIX", "HOST-KEYWORD", "IP-CIDR", "IP-CIDR6", "USER-AGENT"]:
+                    if len(skipped_examples) < 3 and not line.startswith("hostname"): 
+                        skipped_examples.append(f"[类型不支持] {rule_type} -> {raw_line}")
                     continue
 
-                # 存入
+                # === 存入阶段 ===
                 unique_key = f"{rule_type},{target}".lower()
                 if unique_key not in unique_rules:
-                    # 确保策略包含 reject，否则强制修正
-                    if "reject" not in policy: policy = "reject"
-                    
                     final_rule = f"{rule_type},{target},{policy}"
                     unique_rules[unique_key] = final_rule
                     current_count += 1
@@ -83,15 +113,12 @@ def fetch_and_merge_rules():
             source_stats[name] = current_count
             print(f" [成功提取 {current_count} 条]")
             
-            # === 死因报告：如果提取为0，打印原始内容供调试 ===
-            if current_count == 0:
-                print(f"\n[严重警告] {name} 下载成功但提取数为 0！")
-                print("下载内容的前 10 行如下 (请检查是否为 HTML 报错页面):")
+            # === 如果提取很少，打印丢弃样本 ===
+            if current_count < 100:
+                print(f"\n[调试] {name} 提取数量过低，查看被丢弃的行(前3条):")
+                for example in skipped_examples:
+                    print(f"  {example}")
                 print("-" * 30)
-                for i in range(min(10, len(lines))):
-                    print(lines[i])
-                print("-" * 30)
-            # ============================================
             
         except Exception as e:
             print(f" [出错] {e}")
@@ -100,7 +127,6 @@ def fetch_and_merge_rules():
     return list(unique_rules.values()), source_stats
 
 def sort_priority(line):
-    line = line.upper()
     if line.startswith("HOST,"): return 1
     if line.startswith("HOST-SUFFIX,"): return 2
     return 10
@@ -108,9 +134,9 @@ def sort_priority(line):
 def main():
     rules, stats = fetch_and_merge_rules()
     
-    # 只要规则总数少于 500 (即使其中一个源失败)，就报错，保护旧文件
-    if len(rules) < 500:
-        print(f"\n错误：最终生成的规则仅有 {len(rules)} 条，判定为异常，停止写入。")
+    # 只有当总量真的是0时才报错 (防止其中一个源挂了影响另一个)
+    if len(rules) == 0:
+        print(f"\n错误：所有源提取均为 0，停止写入！")
         exit(1)
 
     sorted_rules = sorted(rules, key=sort_priority)
@@ -119,7 +145,7 @@ def main():
     now = datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
     
     header = [
-        f"# QX AdBlock Merged 7.0",
+        f"# QX AdBlock Merged 8.0",
         f"# 更新时间: {now}",
         f"# 规则总数: {len(sorted_rules)}",
         f"# --- 来源详情 ---"
