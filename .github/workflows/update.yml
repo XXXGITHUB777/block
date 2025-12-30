@@ -26,10 +26,11 @@ jobs:
     - name: Run merge script
       run: python main.py
       
-- name: Commit and push changes
+    - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add merged_ads.list
-        git commit -m "Auto-update" || exit 0
-        git push -f origin main
+        # 如果文件没有变化，git commit 会报错，所以加了 || exit 0
+        git commit -m "Auto-update adblock list" || exit 0
+        git push
