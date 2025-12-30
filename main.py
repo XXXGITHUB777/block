@@ -10,7 +10,7 @@ REMOTE_URLS = [
     "https://raw.githubusercontent.com/amiglistimo/Quantumult-X/main/Rewrite/ADBlock.list",
     "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list",
     "https://raw.githubusercontent.com/zirawell/R-Store/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list",
-    "https://limbopro.com/Adblock4limbo.list"
+    "https://raw.githubusercontent.com/limbopro/Adblock4limbo/refs/heads/main/Adblock4limbo.list"
 ]
 
 # 有效的拒绝策略集合 (只保留这些类型的规则，防止混入 DIRECT 或 PROXY)
