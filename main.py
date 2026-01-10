@@ -77,10 +77,12 @@ def fetch_and_merge_rules():
                 else:
                     target = parts[1]
                 
+                # 类型映射
                 if rule_type == "DOMAIN": rule_type = "HOST"
                 if rule_type == "DOMAIN-SUFFIX": rule_type = "HOST-SUFFIX"
                 if rule_type == "DOMAIN-KEYWORD": rule_type = "HOST-KEYWORD"
                 
+                # 策略处理
                 policy = "reject"
                 if len(parts) >= 3:
                     potential_policy = parts[2].lower()
@@ -89,13 +91,19 @@ def fetch_and_merge_rules():
                 
                 if "reject" in policy: policy = "reject"
                 
-                if rule_type not in ["HOST", "HOST-SUFFIX", "HOST-KEYWORD", "IP-CIDR", "IP-CIDR6", "USER-AGENT"]:
+                # === 关键修改：移除 IP-CIDR6 避免报错，保留 IPv4 并加 no-resolve ===
+                if rule_type not in ["HOST", "HOST-SUFFIX", "HOST-KEYWORD", "IP-CIDR", "USER-AGENT"]:
                     continue
 
                 unique_key = f"{rule_type},{target}".lower()
                 
                 if unique_key not in unique_rules:
-                    final_rule = f"{rule_type},{target},{policy}"
+                    # 针对 IPv4 CIDR 规则，自动追加 no-resolve，这是 QX 的标准写法
+                    if rule_type == "IP-CIDR":
+                        final_rule = f"{rule_type},{target},{policy},no-resolve"
+                    else:
+                        final_rule = f"{rule_type},{target},{policy}"
+                    
                     unique_rules[unique_key] = final_rule
                     current_count += 1
             
