@@ -1,11 +1,14 @@
 import requests
 import pytz
 import re
+import os  # 新增：用于文件操作
 from datetime import datetime
 
 # ================= 配置区域 =================
 
-# 4大金刚全员集合，全部使用 ghproxy 加速，确保下载成功率 100%
+OUTPUT_FILENAME = "block.list"  # 修改：输出文件名改为 block.list
+
+# 4大金刚全员集合，全部使用 ghproxy 加速
 REMOTE_URLS = [
     # 1. 秋风 (主力)
     "https://ghproxy.net/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-QuantumultX.list",
@@ -26,9 +29,7 @@ def clean_line(line):
     """
     清洗函数：去除注释、引号、特殊符号
     """
-    # 去除行尾注释 (支持 #, ;, //)
     line = re.split(r'(#|;|//)', line)[0]
-    # 去除首尾空格、引号
     line = line.strip().strip("'").strip('"')
     return line
 
@@ -36,15 +37,13 @@ def fetch_and_merge_rules():
     unique_rules = {} 
     source_stats = {} 
     
-    # 伪装 Header
     headers = {
         'User-Agent': 'Quantumult%20X/1.0.30 (iPhone; iOS 16.0; Scale/3.00)',
     }
     
-    print(f"--- 开始执行 9.0 全员集结版 (共{len(REMOTE_URLS)}个源) ---")
+    print(f"--- 开始执行 9.1 增量统计版 (共{len(REMOTE_URLS)}个源) ---")
 
     for url in REMOTE_URLS:
-        # 提取名字用于显示
         if "AWAvenue" in url: name = "秋风"
         elif "limbopro" in url: name = "毒奶"
         elif "fmz200" in url: name = "FMZ200"
@@ -66,46 +65,34 @@ def fetch_and_merge_rules():
             current_count = 0
             
             for line in lines:
-                # === 清洗 ===
                 line = clean_line(line)
-                
-                # 跳过无效行
                 if not line or line.startswith(('[', '<', '!', 'no-alert')):
                     continue
 
-                # === 拆分 (兼容逗号和空格) ===
                 if ',' in line:
                     parts = [p.strip() for p in line.split(',')]
                 else:
-                    parts = line.split() # 兼容空格分隔
+                    parts = line.split()
 
                 if len(parts) < 2: continue
 
-                # === 识别 ===
                 rule_type = parts[0].upper()
                 target = parts[1]
                 
-                # 兼容性映射
                 if rule_type == "DOMAIN": rule_type = "HOST"
                 if rule_type == "DOMAIN-SUFFIX": rule_type = "HOST-SUFFIX"
                 if rule_type == "DOMAIN-KEYWORD": rule_type = "HOST-KEYWORD"
                 
-                # 策略处理
                 policy = "reject"
                 if len(parts) >= 3:
                     policy = parts[2].lower()
-                
-                # 统一 reject
                 if "reject" in policy: policy = "reject"
                 
-                # === 过滤 QX 类型 ===
                 if rule_type not in ["HOST", "HOST-SUFFIX", "HOST-KEYWORD", "IP-CIDR", "IP-CIDR6", "USER-AGENT"]:
                     continue
 
-                # === 存入 (去重) ===
                 unique_key = f"{rule_type},{target}".lower()
                 
-                # 只有当这个 key 没出现过时才添加 (排在列表前面的源拥有优先权)
                 if unique_key not in unique_rules:
                     final_rule = f"{rule_type},{target},{policy}"
                     unique_rules[unique_key] = final_rule
@@ -125,34 +112,80 @@ def sort_priority(line):
     if line.startswith("HOST-SUFFIX,"): return 2
     return 10
 
+def get_old_rule_count(filepath):
+    """
+    读取旧文件，统计其中的有效规则行数
+    """
+    if not os.path.exists(filepath):
+        return 0, False # 不存在
+    
+    count = 0
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                # 排除空行和注释行，只统计实际规则
+                if line and not line.startswith(('#', ';', '//')):
+                    count += 1
+        return count, True # 存在且统计完成
+    except Exception:
+        return 0, False
+
 def main():
+    # 1. 获取新规则
     rules, stats = fetch_and_merge_rules()
     
-    # 只要总数不为0就算成功
     if len(rules) == 0:
         print(f"\n错误：所有源提取均为 0，停止写入！")
         exit(1)
 
     sorted_rules = sorted(rules, key=sort_priority)
+    current_count = len(sorted_rules)
+
+    # 2. 对比逻辑 (关键修改)
+    old_count, file_exists = get_old_rule_count(OUTPUT_FILENAME)
     
+    diff_msg = ""
+    diff_val = current_count - old_count
+    
+    if not file_exists:
+        diff_msg = "(首次生成)"
+        console_msg = "🆕 首次运行，建立基准"
+    else:
+        if diff_val > 0:
+            diff_msg = f"(+{diff_val})"
+            console_msg = f"📈 增加 {diff_val} 条"
+        elif diff_val < 0:
+            diff_msg = f"({diff_val})" # 负数自带负号
+            console_msg = f"📉 减少 {abs(diff_val)} 条"
+        else:
+            diff_msg = "(持平)"
+            console_msg = "⚖️ 数量无变化"
+
+    # 3. 生成文件
     tz = pytz.timezone('Asia/Shanghai')
-    now = datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
+    现在 = datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
     
     header = [
-        f"# QX AdBlock Merged 9.0 (Full Set)",
+        f"# QX AdBlock All-in-One",
         f"# 更新时间: {now}",
-        f"# 规则总数: {len(sorted_rules)}",
-        f"# --- 来源贡献 ---"
+        f"# 规则统计: {current_count} 条 {diff_msg}", # 写入文件头的统计
+        f"# --- 来源明细 ---"
     ]
     for n, c in stats.items():
         header.append(f"# {n}: {c}")
     header.append("")
     
-    with open("merged_ads.list", "w", encoding="utf-8") as f:
+    with open(OUTPUT_FILENAME, "w", encoding="utf-8") as f:
         f.write("\n".join(header))
         f.write("\n".join(sorted_rules))
         
-    print(f"\n处理完成！共生成 {len(sorted_rules)} 条规则。")
+    print(f"\n" + "="*30)
+    print(f"处理完成！文件已保存为: {OUTPUT_FILENAME}")
+    print(f"本次规则: {current_count}")
+    print(f"上次规则: {old_count}")
+    print(f"变化统计: {console_msg}")
+    print(f"="*30)
 
 if __name__ == "__main__":
     main()
