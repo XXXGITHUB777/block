@@ -1,9 +1,9 @@
 # QX AdBlock All-in-One
-# Updated: 2026-01-10 21:06:21
-# Total Rules: 4652
+# Updated: 2026-01-11 04:49:24
+# Total Rules: 4653
 #
 # [ Rule Statistics ]
-# HOST            : 1527
+# HOST            : 1528
 # HOST-SUFFIX     : 2684
 # HOST-KEYWORD    : 176
 # HOST-WILDCARD   : 1
@@ -17,7 +17,7 @@
 # 秋风              : 902
 # 毒奶              : 521
 # HTTPDNS(IP)     : 163
-# Malware         : 132
+# Malware         : 133
 # HTTPDNS(Virgil) : 48
 # Sukka           : 32
 
@@ -556,6 +556,7 @@ HOST,data.mistat.india.xiaomi.com,reject
 HOST,data.mistat.rus.xiaomi.com,reject
 HOST,data.mistat.xiaomi.com,reject
 HOST,datacollection.uve.weibo.com,reject
+HOST,dc.services.visualstudio.com,reject
 HOST,dc.sigmob.cn,reject
 HOST,ddfs-public.ddimg.mobi,reject
 HOST,de.as.pptv.com,reject
