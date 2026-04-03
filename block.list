@@ -1,22 +1,22 @@
 # QX AdBlock All-in-One
-# Updated: 2026-04-03 05:06:35
-# Total Rules: 4670
+# Updated: 2026-04-04 05:04:46
+# Total Rules: 4683
 #
 # [ Rule Statistics ]
-# HOST            : 1552
+# HOST            : 1557
 # HOST-SUFFIX     : 2682
 # HOST-KEYWORD    : 177
 # HOST-WILDCARD   : 1
 # USER-AGENT      : 1
-# IP-CIDR         : 199
+# IP-CIDR         : 207
 # IP6-CIDR        : 58
 #
 # [ Source Statistics ]
 # FMZ200          : 2664
-# Zirawell        : 1391
+# Zirawell        : 1397
 # 秋风              : 909
 # 毒奶              : 521
-# HTTPDNS(IP)     : 153
+# HTTPDNS(IP)     : 161
 # Malware         : 132
 # HTTPDNS(Virgil) : 60
 # Sukka           : 36
@@ -475,6 +475,7 @@ HOST,c.sayhi.360.cn,reject
 HOST,c.sm.cn,reject
 HOST,c1wx.lianwangtech.com,reject
 HOST,c2.gdt.qq.com,reject
+HOST,cactus.jd.com,reject
 HOST,cad.youku.com,reject
 HOST,canvas-cdn.gdt.qq.com,reject
 HOST,cartoonapi.uc.cn,reject
@@ -629,6 +630,7 @@ HOST,events-drcn.op.dbankcloud.cn,reject
 HOST,events.reddit.com,reject
 HOST,events.redditmedia.com,reject
 HOST,events.statsigapi.net,reject
+HOST,ex.m.jd.com,reject
 HOST,exp.360in.com,reject
 HOST,f74f7f7765f8a2f6.ngaa.net.cn,reject
 HOST,facebookblueprint.com,reject
@@ -949,6 +951,7 @@ HOST,m.shenshiads.com,reject
 HOST,mall-dsp2.qinlinkeji.com,reject
 HOST,mallapi2.qinlinkeji.com,reject
 HOST,mapi.m.jd.com,reject
+HOST,mars.jd.com,reject
 HOST,masdkv6.3g.qq.com,reject
 HOST,mazu.m.qq.com,reject
 HOST,mbads.paas.cmbchina.com,reject
@@ -984,6 +987,7 @@ HOST,mini-prog-drm.vodplayvideo.net,reject
 HOST,mission-pub.smart-tv.cn,reject
 HOST,mistat.xiaomi.com,reject
 HOST,miui-fxcse.avlyun.com,reject
+HOST,mllog.jd.com,reject
 HOST,mlog.bigda.com,reject
 HOST,mnqlog.ldmnq.com,reject
 HOST,moatads.com,reject
@@ -1094,6 +1098,7 @@ HOST,pay.sboot.cn,reject
 HOST,pcdn.xmcdn.com,reject
 HOST,pcdn.yximgs.com,reject
 HOST,pcm-img.zhls.qq.com,reject
+HOST,perf.m.jd.com,reject
 HOST,pgdt.gtimg.cn,reject
 HOST,pgdt.gtimg.com,reject
 HOST,pgdt.ugdtimg.com,reject
@@ -4451,6 +4456,7 @@ IP-CIDR,103.143.160.209/32,reject,no-resolve
 IP-CIDR,103.224.222.208/32,reject,no-resolve
 IP-CIDR,103.37.155.60/32,reject,no-resolve
 IP-CIDR,103.41.167.237/32,reject,no-resolve
+IP-CIDR,106.11.162.136/32,reject,no-resolve
 IP-CIDR,106.11.226.137/32,reject,no-resolve
 IP-CIDR,106.11.226.138/32,reject,no-resolve
 IP-CIDR,106.11.226.199/32,reject,no-resolve
@@ -4555,8 +4561,14 @@ IP-CIDR,203.119.213.106/32,reject,no-resolve
 IP-CIDR,203.119.213.130/32,reject,no-resolve
 IP-CIDR,203.119.213.131/32,reject,no-resolve
 IP-CIDR,203.119.213.142/32,reject,no-resolve
+IP-CIDR,203.119.213.143/32,reject,no-resolve
+IP-CIDR,203.119.213.144/32,reject,no-resolve
+IP-CIDR,203.119.213.171/32,reject,no-resolve
 IP-CIDR,203.119.213.197/32,reject,no-resolve
+IP-CIDR,203.119.213.200/32,reject,no-resolve
+IP-CIDR,203.119.213.215/32,reject,no-resolve
 IP-CIDR,203.119.213.22/32,reject,no-resolve
+IP-CIDR,203.119.213.45/32,reject,no-resolve
 IP-CIDR,203.119.213.99/32,reject,no-resolve
 IP-CIDR,203.119.238.0/24,reject,no-resolve
 IP-CIDR,203.119.238.164/32,reject,no-resolve
@@ -4620,6 +4632,7 @@ IP-CIDR,59.82.14.161/32,reject,no-resolve
 IP-CIDR,59.82.34.147/32,reject,no-resolve
 IP-CIDR,59.82.34.255/32,reject,no-resolve
 IP-CIDR,59.82.43.146/32,reject,no-resolve
+IP-CIDR,59.82.43.155/32,reject,no-resolve
 IP-CIDR,59.82.43.200/32,reject,no-resolve
 IP-CIDR,59.82.43.202/32,reject,no-resolve
 IP-CIDR,59.82.43.222/32,reject,no-resolve
@@ -4637,18 +4650,18 @@ IP6-CIDR,2401:b180:2000:20::10/128,reject,no-resolve
 IP6-CIDR,2401:b180:2000:30::1c/128,reject,no-resolve
 IP6-CIDR,2401:b180:7001::31b/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::109/128,reject,no-resolve
-IP6-CIDR,2401:b180:7003::128/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::155/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::15b/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::229/128,reject,no-resolve
+IP6-CIDR,2401:b180:7003::24d/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::2be/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::2ef/128,reject,no-resolve
+IP6-CIDR,2401:b180:7003::2fe/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::330/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::34d/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::3ab/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::3b2/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::422/128,reject,no-resolve
-IP6-CIDR,2401:b180:7003::445/128,reject,no-resolve
 IP6-CIDR,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,reject,no-resolve
 IP6-CIDR,2402:4e00:1900:1700:0:9554:1ad9:c3a/128,reject,no-resolve
 IP6-CIDR,2402:db40:5100:1011::5/128,reject,no-resolve
@@ -4656,15 +4669,15 @@ IP6-CIDR,2408:4001:f00::10b1/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::1149/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::11be/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::122e/128,reject,no-resolve
+IP6-CIDR,2408:4001:f00::1274/128,reject,no-resolve
+IP6-CIDR,2408:4001:f00::12da/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::12e0/128,reject,no-resolve
-IP6-CIDR,2408:4001:f00::12f7/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::24/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::261/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::342/128,reject,no-resolve
-IP6-CIDR,2408:4001:f10::346/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::370/128,reject,no-resolve
-IP6-CIDR,2408:4001:f10::390/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::3d3/128,reject,no-resolve
+IP6-CIDR,2408:4001:f10::3e2/128,reject,no-resolve
 IP6-CIDR,2408:4003:1f40::30a/128,reject,no-resolve
 IP6-CIDR,2408:80f1:21:3007::12a/128,reject,no-resolve
 IP6-CIDR,2408:80f1:21:c125::30/128,reject,no-resolve
