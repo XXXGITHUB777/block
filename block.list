@@ -1,22 +1,22 @@
 # QX AdBlock All-in-One
-# Updated: 2026-09-08 06:58:39
-# Total Rules: 4706
+# Updated: 2026-09-09 06:57:05
+# Total Rules: 4733
 #
 # [ Rule Statistics ]
-# HOST            : 1566
+# HOST            : 1593
 # HOST-SUFFIX     : 2698
-# HOST-KEYWORD    : 182
+# HOST-KEYWORD    : 181
 # HOST-WILDCARD   : 1
 # USER-AGENT      : 1
-# IP-CIDR         : 197
-# IP6-CIDR        : 61
+# IP-CIDR         : 196
+# IP6-CIDR        : 63
 #
 # [ Source Statistics ]
 # FMZ200          : 2669
-# Zirawell        : 1422
-# 秋风              : 902
+# Zirawell        : 1421
+# 秋风              : 948
 # 毒奶              : 521
-# HTTPDNS(IP)     : 166
+# HTTPDNS(IP)     : 167
 # Malware         : 132
 # HTTPDNS(Virgil) : 64
 # Sukka           : 38
@@ -77,6 +77,7 @@ HOST,ad.cctv.com,reject
 HOST,ad.chelaile.net.cn,reject
 HOST,ad.cyapi.cn,reject
 HOST,ad.doubleclick.net,reject
+HOST,ad.duoduo.link,reject
 HOST,ad.gameley.com,reject
 HOST,ad.hpplay.cn,reject
 HOST,ad.iot.360.cn,reject
@@ -88,6 +89,7 @@ HOST,ad.maoyan.com,reject
 HOST,ad.mcloud.139.com,reject
 HOST,ad.mobile.youku.com,reject
 HOST,ad.partner.gifshow.com,reject
+HOST,ad.player.baidu.com,reject
 HOST,ad.qingting.fm,reject
 HOST,ad.qq.com,reject
 HOST,ad.richmob.cn,reject
@@ -105,16 +107,20 @@ HOST,ad.xunkids.com,reject
 HOST,ad.yixin.im,reject
 HOST,ad.ysepay.com,reject
 HOST,ad.zijieapi.com,reject
+HOST,ad4.sina.com.cn,reject
 HOST,adapi.izuiyou.com,reject
 HOST,adapi.yynetwk.com,reject
+HOST,adash-emas.cn-hangzhou.aliyuncs.com,reject
 HOST,adash.man.aliyuncs.com,reject
 HOST,adashbc.ut.taobao.com,reject
 HOST,adashx.m.taobao.com,reject
 HOST,adashxgc.ut.taobao.com,reject
 HOST,adbehavior.wsa.ximalaya.com,reject
 HOST,adbehavior.ximalaya.com,reject
+HOST,adbox.sina.com.cn,reject
 HOST,adbs.ximalaya.com,reject
 HOST,adc.hpplay.cn,reject
+HOST,adcanvas.com,reject
 HOST,adcdn.hpplay.cn,reject
 HOST,adcdn.tencentmusic.com,reject
 HOST,adcdn6.tencentmusic.com,reject
@@ -148,6 +154,7 @@ HOST,adm2.autoimg.cn,reject
 HOST,adm3.autoimg.cn,reject
 HOST,admarket.21cn.com,reject
 HOST,admarketing.yahoo.net,reject
+HOST,admobile.top,reject
 HOST,admonitor.thepaper.cn,reject
 HOST,admusicpic.music.126.net,reject
 HOST,adnew.wifi8.com,reject
@@ -211,6 +218,7 @@ HOST,ads5-normal-lf.zijieapi.com,reject
 HOST,ads5-normal-lq.zijieapi.com,reject
 HOST,ads5-normal.zijieapi.com,reject
 HOST,adsapi.snapchat.com,reject
+HOST,adscdn.baidu.com,reject
 HOST,adsdk.vivo.com.cn,reject
 HOST,adse.test.ximalaya.com,reject
 HOST,adse.wsa.ximalaya.com,reject
@@ -239,10 +247,13 @@ HOST,adsmind.apdcdn.tc.qq.com,reject
 HOST,adsmind.gdtimg.com,reject
 HOST,adsmind.tc.qq.com,reject
 HOST,adsmind.ugdtimg.com,reject
+HOST,adsmoloco.com,reject
 HOST,adsp.xunlei.com,reject
+HOST,adspecs.yahoo.com,reject
 HOST,adsstatic.vivo.com.cn,reject
 HOST,adstat.izuiyou.com,reject
 HOST,adstats.tencentmusic.com,reject
+HOST,adstextview.qq.com,reject
 HOST,adstore-1252524079.file.myqcloud.com,reject
 HOST,adstore-index-1252524079.file.myqcloud.com,reject
 HOST,adstrategy.biz.weibo.com,reject
@@ -283,6 +294,7 @@ HOST,adx-cn.anythinktech.com,reject
 HOST,adx-drcn.op.dbankcloud.cn,reject
 HOST,adx-open-service.youku.com,reject
 HOST,adx-os.anythinktech.com,reject
+HOST,adx-os.bridgeoos.com,reject
 HOST,adx-os.bridgeturbo.com,reject
 HOST,adx-saas.advlion.com,reject
 HOST,adx-strategy-api-cn.statisticslinks.com,reject
@@ -315,6 +327,7 @@ HOST,ali-ad.a.yximgs.com,reject
 HOST,ali-p2p-v2.pull.yximgs.com,reject
 HOST,alicoccdncnc-xn.inter.71edge.com,reject
 HOST,alicoccdnct-xn.inter.71edge.com,reject
+HOST,alltbcsp2p.baidu.com,reject
 HOST,alog.umeng.com,reject
 HOST,alogus.umeng.com,reject
 HOST,als.baidu.com,reject
@@ -533,6 +546,7 @@ HOST,collect.hnair.com,reject
 HOST,collect.kugou.com,reject
 HOST,collect.xiaopeng.com,reject
 HOST,commdata.v.qq.com,reject
+HOST,commercial.shouji.360.cn,reject
 HOST,conf-darwin.xycdn.com,reject
 HOST,conf.hpplay.cn,reject
 HOST,config.chsmarttv.com,reject
@@ -644,6 +658,7 @@ HOST,events-drcn.op.dbankcloud.cn,reject
 HOST,events.reddit.com,reject
 HOST,events.redditmedia.com,reject
 HOST,events.statsigapi.net,reject
+HOST,eventv1.leidong.rayenergytech.com,reject
 HOST,ex.m.jd.com,reject
 HOST,exp.360in.com,reject
 HOST,f74f7f7765f8a2f6.ngaa.net.cn,reject
@@ -718,6 +733,8 @@ HOST,grs.hicloud.com,reject
 HOST,gslb.hpplay.cn,reject
 HOST,gtm.wise.com,reject
 HOST,gvideo.qpic.cn,reject
+HOST,gw5.push.mcp.weibo.cn,reject
+HOST,gw6.push.mcp.weibo.cn,reject
 HOST,h-adashx.ut.ele.me,reject
 HOST,h-adashx.ut.taobao.com,reject
 HOST,h.trace.qq.com,reject
@@ -769,6 +786,7 @@ HOST,hugelog.fcbox.com,reject
 HOST,hui.sohu.com,reject
 HOST,huichuan-mc.sm.cn,reject
 HOST,huichuan.sm.cn,reject
+HOST,huodong.ios.shouji.360.cn,reject
 HOST,huodong.weibo.cn,reject
 HOST,huyafile.msstatic.com,reject
 HOST,hw-ot-ad.a.yximgs.com,reject
@@ -833,6 +851,7 @@ HOST,info4.video.qq.com,reject
 HOST,info6.video.qq.com,reject
 HOST,init.sms.mob.com,reject
 HOST,init.supersonicads.com,reject
+HOST,inner-hw.huazirc.com,reject
 HOST,ios.bugly.qq.com,reject
 HOST,iot-eu-logser.realme.com,reject
 HOST,iot-logser.realme.com,reject
@@ -871,6 +890,7 @@ HOST,ks-p2p-v2.pull.yximgs.com,reject
 HOST,ks-p2p.pull.yximgs.com,reject
 HOST,ks.ferlytc.com,reject
 HOST,ks.pull.yximgs.com,reject
+HOST,kwpush.kuwo.cn,reject
 HOST,l6.fancyapi.com,reject
 HOST,launch.apple.com,reject
 HOST,launcher.smart-tv.cn,reject
@@ -954,6 +974,7 @@ HOST,logservice.hicloud.com,reject
 HOST,logservice1.hicloud.com,reject
 HOST,logtj.kugou.com,reject
 HOST,logupdate.avlyun.sec.miui.com,reject
+HOST,logv2.ireader.com,reject
 HOST,logwebs.kugou.com,reject
 HOST,lookup.api.bsb.baidu.com,reject
 HOST,luimg.baidu.com,reject
@@ -966,6 +987,7 @@ HOST,m.atm.youku.com,reject
 HOST,m.meitun.com,reject
 HOST,m.pinduoduo.net,reject
 HOST,m.shenshiads.com,reject
+HOST,m1.ad.10010.com,reject
 HOST,mall-dsp2.qinlinkeji.com,reject
 HOST,mallapi2.qinlinkeji.com,reject
 HOST,mapi.m.jd.com,reject
@@ -1135,6 +1157,7 @@ HOST,pos.baidu.com,reject
 HOST,pp-cdnfile2pcdn.msstatic.com,reject
 HOST,pre-acs.youku.com,reject
 HOST,prod-mediate-events.applovin.com,reject
+HOST,prom-sdkv2.jysper.net,reject
 HOST,promotion-partner.kuaishou.com,reject
 HOST,proxy.advp.apple.com,reject
 HOST,proxy.safebrowsing.apple,reject
@@ -1162,6 +1185,7 @@ HOST,rdx.autohome.com.cn,reject
 HOST,reading.snssdk.com,reject
 HOST,recommend-drcn.hms.dbankcloud.cn,reject
 HOST,regist.fotoable.com,reject
+HOST,report.dxunion.cn,reject
 HOST,report.tencentmusic.com,reject
 HOST,report.tv.kohesport.qq.com,reject
 HOST,res.hubcloud.com.cn,reject
@@ -1453,9 +1477,11 @@ HOST,umengjmacs.m.taobao.com,reject
 HOST,umessage-online-zb.uc.cn,reject
 HOST,umini.shujupie.com,reject
 HOST,union-mlog.bigda.com,reject
+HOST,union-record.oss-cn-zhangjiakou.aliyuncs.com,reject
 HOST,union.baidu.cn,reject
 HOST,union.baidu.com,reject
 HOST,union.chinalifeonline.com.cn,reject
+HOST,unityads.unity3d.com,reject
 HOST,upc.zztfly.com,reject
 HOST,update.avlyun.sec.miui.com,reject
 HOST,update.lejiao.tv,reject
@@ -1579,6 +1605,7 @@ HOST,yt-adp.nosdn.127.net,reject
 HOST,yt-adp.ws.126.net,reject
 HOST,ytx-file.110route.cn,reject
 HOST,yuki-cdn.line-apps.com,reject
+HOST,yumao.puata.info,reject
 HOST,yuyin-httpdns.gslb.yy.com,reject
 HOST,z-m-graph.facebook.com,reject
 HOST,zeus.ad.xiaomi.com,reject
@@ -4311,7 +4338,6 @@ HOST-KEYWORD,a3.pstatp.com,reject
 HOST-KEYWORD,ad-sign.byteimg.com,reject
 HOST-KEYWORD,ad.google,reject
 HOST-KEYWORD,adash.man.aliyuncs.com,reject
-HOST-KEYWORD,adashx.ut.fliggy.com,reject
 HOST-KEYWORD,adform,reject
 HOST-KEYWORD,adm3.autoimg.cn,reject
 HOST-KEYWORD,adproxy.autohome.com,reject
@@ -4488,10 +4514,9 @@ IP-CIDR,103.224.222.208/32,reject,no-resolve
 IP-CIDR,103.37.155.60/32,reject,no-resolve
 IP-CIDR,103.41.167.237/32,reject,no-resolve
 IP-CIDR,103.63.160.80/32,reject,no-resolve
+IP-CIDR,106.11.162.136/32,reject,no-resolve
 IP-CIDR,106.11.226.137/32,reject,no-resolve
-IP-CIDR,106.11.226.138/32,reject,no-resolve
-IP-CIDR,106.11.226.44/32,reject,no-resolve
-IP-CIDR,106.11.226.87/32,reject,no-resolve
+IP-CIDR,106.11.226.239/32,reject,no-resolve
 IP-CIDR,106.11.25.175/32,reject,no-resolve
 IP-CIDR,106.11.25.239/32,reject,no-resolve
 IP-CIDR,106.14.13.140/32,reject,no-resolve
@@ -4587,12 +4612,15 @@ IP-CIDR,203.119.213.106/32,reject,no-resolve
 IP-CIDR,203.119.213.111/32,reject,no-resolve
 IP-CIDR,203.119.213.130/32,reject,no-resolve
 IP-CIDR,203.119.213.131/32,reject,no-resolve
+IP-CIDR,203.119.213.143/32,reject,no-resolve
+IP-CIDR,203.119.213.144/32,reject,no-resolve
 IP-CIDR,203.119.213.171/32,reject,no-resolve
 IP-CIDR,203.119.213.197/32,reject,no-resolve
 IP-CIDR,203.119.213.200/32,reject,no-resolve
 IP-CIDR,203.119.213.215/32,reject,no-resolve
 IP-CIDR,203.119.213.22/32,reject,no-resolve
 IP-CIDR,203.119.213.45/32,reject,no-resolve
+IP-CIDR,203.119.213.99/32,reject,no-resolve
 IP-CIDR,203.119.238.164/32,reject,no-resolve
 IP-CIDR,203.119.238.194/32,reject,no-resolve
 IP-CIDR,203.119.238.240/32,reject,no-resolve
@@ -4643,7 +4671,6 @@ IP-CIDR,59.82.122.36/32,reject,no-resolve
 IP-CIDR,59.82.133.114/32,reject,no-resolve
 IP-CIDR,59.82.133.149/32,reject,no-resolve
 IP-CIDR,59.82.133.157/32,reject,no-resolve
-IP-CIDR,59.82.133.207/32,reject,no-resolve
 IP-CIDR,59.82.133.36/32,reject,no-resolve
 IP-CIDR,59.82.133.4/32,reject,no-resolve
 IP-CIDR,59.82.133.59/32,reject,no-resolve
@@ -4652,13 +4679,11 @@ IP-CIDR,59.82.14.1/32,reject,no-resolve
 IP-CIDR,59.82.14.161/32,reject,no-resolve
 IP-CIDR,59.82.34.147/32,reject,no-resolve
 IP-CIDR,59.82.34.255/32,reject,no-resolve
-IP-CIDR,59.82.43.146/32,reject,no-resolve
 IP-CIDR,59.82.43.155/32,reject,no-resolve
 IP-CIDR,59.82.43.200/32,reject,no-resolve
 IP-CIDR,59.82.43.202/32,reject,no-resolve
+IP-CIDR,59.82.43.222/32,reject,no-resolve
 IP-CIDR,59.82.43.27/32,reject,no-resolve
-IP-CIDR,59.82.9.119/32,reject,no-resolve
-IP-CIDR,59.82.9.166/32,reject,no-resolve
 IP-CIDR,59.82.9.211/32,reject,no-resolve
 IP-CIDR,61.151.230.174/32,reject,no-resolve
 IP-CIDR,61.151.230.221/32,reject,no-resolve
@@ -4669,30 +4694,32 @@ IP-CIDR,81.71.61.216/32,reject,no-resolve
 IP6-CIDR,2401:b180:2000:20::10/128,reject,no-resolve
 IP6-CIDR,2401:b180:2000:30::1c/128,reject,no-resolve
 IP6-CIDR,2401:b180:7001::31b/128,reject,no-resolve
-IP6-CIDR,2401:b180:7003::109/128,reject,no-resolve
-IP6-CIDR,2401:b180:7003::155/128,reject,no-resolve
+IP6-CIDR,2401:b180:7003::128/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::15b/128,reject,no-resolve
-IP6-CIDR,2401:b180:7003::24d/128,reject,no-resolve
+IP6-CIDR,2401:b180:7003::229/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::2be/128,reject,no-resolve
+IP6-CIDR,2401:b180:7003::2ef/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::2fe/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::330/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::36d/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::3ab/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::3b2/128,reject,no-resolve
+IP6-CIDR,2401:b180:7003::422/128,reject,no-resolve
 IP6-CIDR,2401:b180:7003::445/128,reject,no-resolve
 IP6-CIDR,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,reject,no-resolve
 IP6-CIDR,2402:4e00:1900:1700:0:9554:1ad9:c3a/128,reject,no-resolve
 IP6-CIDR,2402:db40:5100:1011::5/128,reject,no-resolve
+IP6-CIDR,2408:4001:f00::1149/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::11be/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::122e/128,reject,no-resolve
+IP6-CIDR,2408:4001:f00::1274/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::12da/128,reject,no-resolve
 IP6-CIDR,2408:4001:f00::12e0/128,reject,no-resolve
-IP6-CIDR,2408:4001:f10::24/128,reject,no-resolve
-IP6-CIDR,2408:4001:f10::261/128,reject,no-resolve
-IP6-CIDR,2408:4001:f10::342/128,reject,no-resolve
+IP6-CIDR,2408:4001:f00::12f7/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::346/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::370/128,reject,no-resolve
 IP6-CIDR,2408:4001:f10::390/128,reject,no-resolve
+IP6-CIDR,2408:4001:f10::3e2/128,reject,no-resolve
 IP6-CIDR,2408:4002:1026:9b0b:7672:cae4:d8ba:2008/128,reject,no-resolve
 IP6-CIDR,2408:4002:1026:9b0c:3598:fd3:ee2:8b89/128,reject,no-resolve
 IP6-CIDR,2408:4003:1f40::30a/128,reject,no-resolve
